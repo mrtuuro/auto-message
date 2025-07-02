@@ -18,7 +18,7 @@ swagger:
 	@$(SWAG_CLI) init -g $(SWAG_MAIN) --output $(SWAG_OUT)
 
 
-build: 
+build: swagger
 	@mkdir -p bin
 	@$(GO) build -o $(BIN) $(MAIN)
 

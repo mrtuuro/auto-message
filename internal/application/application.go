@@ -16,6 +16,8 @@ import (
 	"github.com/mrtuuro/auto-messager/internal/service"
 	"github.com/mrtuuro/auto-messager/internal/token"
 	"github.com/mrtuuro/auto-messager/internal/validator"
+	echoSwagger "github.com/swaggo/echo-swagger"
+	_ "github.com/mrtuuro/auto-messager/docs"
 )
 
 type Application struct {
@@ -47,6 +49,7 @@ func setupEcho() *echo.Echo {
 	e := echo.New()
 
 	e.Validator = validator.NewCustomValidator()
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.Use(middleware.Logger())
 	e.Logger.SetLevel(log.ERROR)
 	return e

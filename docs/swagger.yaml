@@ -1,0 +1,46 @@
+definitions:
+  response.SwaggerSuccess:
+    properties:
+      code:
+        type: string
+      data: {}
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+info:
+  contact: {}
+paths:
+  /v1/auto/start:
+    post:
+      responses:
+        "204":
+          description: No Content
+      summary: Start the automatic 2-minute sender
+      tags:
+      - autosend
+  /v1/auto/stop:
+    post:
+      responses:
+        "204":
+          description: No Content
+      summary: Stop (pause) the automatic sender
+      tags:
+      - autosend
+  /v1/healthz:
+    get:
+      consumes:
+      - application/json
+      description: Returns 200 OK with a success
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SwaggerSuccess'
+      summary: Liveness probe
+      tags:
+      - system
+swagger: "2.0"

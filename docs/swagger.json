@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/v1/auto/start": {
+            "post": {
+                "tags": [
+                    "autosend"
+                ],
+                "summary": "Start the automatic 2-minute sender",
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/v1/auto/stop": {
+            "post": {
+                "tags": [
+                    "autosend"
+                ],
+                "summary": "Stop (pause) the automatic sender",
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/v1/healthz": {
+            "get": {
+                "description": "Returns 200 OK with a success",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "system"
+                ],
+                "summary": "Liveness probe",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.SwaggerSuccess"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "response.SwaggerSuccess": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "data": {},
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
